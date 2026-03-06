@@ -1,3 +1,11 @@
+"""
+Hangman Game
+
+This module runs a command-line Hangman game where the player guesses letters
+to reveal a hidden word. The program tracks statistics across multiple rounds,
+including games played, won, and lost.
+"""
+
 # Import the random module to allow the program to choose a random word
 import random
 
@@ -15,20 +23,30 @@ games_won = 0
 games_lost = 0
 
 
-# -----------------------------
-# FUNCTION: choose_word
-# Selects a random word from the word list
-# -----------------------------
 def choose_word():
+    """
+    Select and return a random word from the word list.
+
+    Returns:
+        str: A randomly chosen word from the imported word_list.
+    """
     return random.choice(word_list)
 
 
-# -----------------------------
-# FUNCTION: display_word
-# Creates the word display showing guessed letters
-# and underscores for letters that have not been guessed yet
-# -----------------------------
 def display_word(secret_word, guessed_letters):
+    """
+    Generate the current visible version of the word.
+
+    Letters that have been guessed correctly are displayed,
+    while unguessed letters are replaced with underscores.
+
+    Args:
+        secret_word (str): The word the player is trying to guess.
+        guessed_letters (list): Letters the player has guessed correctly.
+
+    Returns:
+        str: The formatted word display showing guessed letters and underscores.
+    """
 
     display = ""
 
@@ -41,11 +59,15 @@ def display_word(secret_word, guessed_letters):
     return display
 
 
-# -----------------------------
-# FUNCTION: play_game
-# Runs one full round of the Hangman game
-# -----------------------------
 def play_game():
+    """
+    Run a single round of the Hangman game.
+
+    The function selects a random word, manages player guesses,
+    tracks remaining lives, and determines win or loss conditions.
+    It also updates the global statistics for games played,
+    games won, and games lost.
+    """
 
     global games_played
     global games_won
@@ -136,11 +158,13 @@ def play_game():
         print(stages[lives])
 
 
-# -----------------------------
-# FUNCTION: show_statistics
-# Displays overall game statistics
-# -----------------------------
 def show_statistics():
+    """
+    Display the player's overall game statistics.
+
+    Shows the total number of games played, won, and lost
+    during the current program session.
+    """
 
     print("\n------ Game Statistics ------")
     print(f"Games Played: {games_played}")
